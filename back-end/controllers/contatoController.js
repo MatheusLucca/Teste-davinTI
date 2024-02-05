@@ -7,15 +7,17 @@ class ContatoController{
             catch(err => res.status(500).json(err.message));
     }
     post(req, res){
-        const novoContato = req.body;
-        const contato = contatoModel.post(novoContato);
+        const novoContato = req.body.CONTATO;
+        const telefones = req.body.TELEFONES;
+        const contato = contatoModel.post(novoContato, telefones);
         return contato.then(contatoCriado => res.status(201).json(contatoCriado)).
             catch(err => res.status(500).json(err.message));
     }
     put(req, res){
         const {id} = req.params;
-        const contatoAtualizado = req.body;
-        const contato = contatoModel.put(contatoAtualizado, id);
+        const contatoAtualizado = req.body.CONTATO;
+        const telefones = req.body.TELEFONES;
+        const contato = contatoModel.put(contatoAtualizado, id, telefones);
         return contato.then(contatoAtualizado => res.status(200).json(contatoAtualizado)).
             catch(err => res.status(500).json(err.message));
     }

@@ -1,18 +1,15 @@
 const express = require("express");
 const app = express();
-const port = 8000;
-const router = require("./routers/index");
-const conexao = require("./infra/conexao");
-const tabelas = require("./infra/tabelas");
+const config = require("config");
+const appCustom = require("./config/appCustom");
+
+appCustom(app, express);
 
 
-router(app, express);
-tabelas.init(conexao);
-
-app.listen(port, (error) => {
+app.listen(config.get("port"), (error) => {
     if (error) {
         console.log("Error running the server");
         return;
     }
-    console.log("Server running on port", port);
+    console.log("Server running on port", config.get("port"));
 })
