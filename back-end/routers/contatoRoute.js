@@ -1,22 +1,13 @@
 const {Router} = require('express');
 const router = Router();
+const contatoController = require('../controllers/contatoController');
 
-router.get('/contatos', (req, res) => {
-    res.send('Contato');
-});
+router.get('/contatos', contatoController.get);
 
-router.post('/contatos', (req, res) => {
-    res.send('Post');
-});
+router.post('/contatos', contatoController.post);
 
-router.put('/contato/:id', (req, res) => {
-    const {id} = req.params;
-    res.send(`put ${id}`);
-});
+router.put('/contato/:id', contatoController.put);
 
-router.delete('/contato/:id', (req, res) => {
-    const {id} = req.params;
-    res.send(`delete ${id}`);
-});
+router.delete('/contato/:id', contatoController.delete);
 
 module.exports = router;
