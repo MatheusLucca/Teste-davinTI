@@ -23,8 +23,8 @@ class ContatoController{
     }
     delete(req, res){
         const {id} = req.params;
-        const contato = contatoModel.delete(id);
-        return contato.then(contatoDeletado => res.status(200).json(contatoDeletado)).
+        const retorno = contatoModel.delete(id);
+        return retorno.then((resultado) => res.status(200).json(resultado)).    
             catch(err => res.status(500).json(err.message));
     }
 }
