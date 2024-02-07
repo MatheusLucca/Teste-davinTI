@@ -14,9 +14,15 @@ class ContatoModel {
     }
 
     get() {
-        const sql = `SELECT contatos.id, contatos.nome, contatos.idade, GROUP_CONCAT(telefones.numero) AS numeros_telefone
+        const sql = `SELECT contatos.id, contatos.nome, contatos.idade, GROUP_CONCAT(telefones.numero SEPARATOR ', ') AS telefones
             FROM contatos LEFT JOIN telefones ON contatos.id = telefones.idcontato GROUP BY contatos.id`;
         return this.executaQuery(sql);
+    }
+
+    getById(id) {
+        const sql = `SELECT contatos.id, contatos.nome, contatos.idade, GROUP_CONCAT(telefones.numero SEPARATOR ', ') AS telefones
+            FROM contatos LEFT JOIN telefones ON contatos.id = telefones.idcontato WHERE contatos.id = ? GROUP BY contatos.id`;
+        return this.executaQuery(sql, id);
     }
 
 

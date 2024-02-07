@@ -1,14 +1,16 @@
 import { Header } from "@/components/Header";
-import Image from "next/image";
+import { Contact, ListItem } from "@/components/ListItem";
+import { List } from '@/components/List';
+
+
+
+
 
 export default function Home() {
   return (
     <main className="h-screen flex flex-col">
       <Header />
-      <div>
-        <h2>Listagem de Contatos</h2>
-        
-      </div>
+      <List/>
     </main>
   );
 }

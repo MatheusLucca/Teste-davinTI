@@ -6,6 +6,12 @@ class ContatoController{
         return listaContatos.then(contatos => res.status(200).json(contatos)).
             catch(err => res.status(500).json(err.message));
     }
+    getById(req, res) {
+        const { id } = req.params;
+        const contato = contatoModel.getById(id);
+        return contato.then(contato => res.status(200).json(contato))
+            .catch(err => res.status(500).json(err.message));
+    }
     post(req, res){
         const novoContato = req.body.CONTATO;
         const telefones = req.body.TELEFONES;
