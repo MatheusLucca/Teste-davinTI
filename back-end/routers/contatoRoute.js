@@ -6,6 +6,8 @@ router.get('/contatos', contatoController.get);
 
 router.get('/contato/:id', contatoController.getById);
 
+router.get('/contatos/:field/:value', contatoController.getByField);
+
 router.post('/contatos', contatoController.post);
 
 router.put('/contato/:id', contatoController.put);

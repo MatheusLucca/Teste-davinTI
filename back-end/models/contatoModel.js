@@ -25,6 +25,12 @@ class ContatoModel {
         return this.executaQuery(sql, id);
     }
 
+    getByField(field, value) {
+        const sql = `SELECT contatos.id, contatos.nome, contatos.idade, GROUP_CONCAT(telefones.numero SEPARATOR ', ') AS telefones
+            FROM contatos LEFT JOIN telefones ON contatos.id = telefones.idcontato WHERE ${field} LIKE ? GROUP BY contatos.id`;
+        return this.executaQuery(sql, `%${value}%`);
+    }
+
 
     post(contato, telefones) {
         const sql = 'INSERT INTO contatos SET ?';
@@ -39,15 +45,22 @@ class ContatoModel {
 
     put(contato, id, telefones) {
         const sql = 'UPDATE contatos SET ? WHERE id = ?';
-        const idTelefones = []
+        const sqlExcluiTelefones = 'DELETE FROM telefones WHERE idContato = ? AND numero not in (?)';
+        this.executaQuery(sqlExcluiTelefones, [id, telefones.map(telefone => telefone.NUMERO)]);
         for (const element of telefones) {
-            const sql = 'UPDATE telefones SET ? WHERE idContato = ? and id = ?';
-
-            this.executaQuery(sql, [element, id, element.ID]);
-            idTelefones.push(element.ID);
+            const sqlCheckTelefone = 'SELECT id FROM telefones WHERE idContato = ? AND numero = ?';
+            const sqlInsertTelefone = 'INSERT INTO telefones (idContato, numero) VALUES (?, ?)';
+            this.executaQuery(sqlCheckTelefone, [id, element.NUMERO])
+                .then((resultado) => {
+                    if (resultado.length === 0) {
+                        return this.executaQuery(sqlInsertTelefone, [id, element.NUMERO]);
+                    }
+                })
+                .catch((error) => {
+                    throw error;
+                });
         }
-        const sqltelefones = 'DELETE FROM telefones WHERE idContato = ? and id not in (?)';
-        this.executaQuery(sqltelefones, [id, idTelefones]);
+
         return this.executaQuery(sql, [contato, id]);
     }
     

@@ -12,6 +12,15 @@ class ContatoController{
         return contato.then(contato => res.status(200).json(contato))
             .catch(err => res.status(500).json(err.message));
     }
+
+    getByField(req, res) {
+        const { field, value } = req.params;
+        console.log(field, value);
+        const contato = contatoModel.getByField(field, value);
+        return contato.then(contato => res.status(200).json(contato))
+            .catch(err => res.status(500).json(err.message));
+    }
+
     post(req, res){
         const novoContato = req.body.CONTATO;
         const telefones = req.body.TELEFONES;
