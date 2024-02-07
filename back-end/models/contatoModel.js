@@ -1,5 +1,6 @@
 const conexao = require('../infra/conexao');
 const fs = require('fs').promises;
+
 class ContatoModel {
 
     executaQuery(sql, parametros = '') {
@@ -99,6 +100,11 @@ class ContatoModel {
       
         const logMessage = `${dataFormatada} - ${mensagem}\n`;
 
+        fs.mkdir('./logs', { recursive: true })
+            .catch((error) => {
+                throw error;
+            });
+            
         const caminhoArquivoLog = './logs/exclusoes.log';
 
         return fs.appendFile(caminhoArquivoLog, logMessage, 'utf-8')
