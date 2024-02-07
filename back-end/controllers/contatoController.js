@@ -15,7 +15,6 @@ class ContatoController{
 
     getByField(req, res) {
         const { field, value } = req.params;
-        console.log(field, value);
         const contato = contatoModel.getByField(field, value);
         return contato.then(contato => res.status(200).json(contato))
             .catch(err => res.status(500).json(err.message));

@@ -17,7 +17,6 @@ class Tabelas{
                 console.log(erro);
                 return;
             } 
-            console.log("Tabela Contato criada com sucesso");
         });
     }
     criarTabelaTelefones(){
@@ -33,7 +32,6 @@ class Tabelas{
                 console.log(erro);
                 return;
             } 
-            console.log("Tabela Telefone criada com sucesso");
         });
     }
 }
