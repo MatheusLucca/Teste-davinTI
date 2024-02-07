@@ -1,5 +1,5 @@
 # Projeto
-Este teste de vaga consiste em uma aplicação desenvolvida em ReactJS e Node Implementando operações CRUD (Create, Read, Update, Delete) de veículos.
+Este teste de vaga consiste em uma aplicação desenvolvida em ReactJS com Next e Node Implementando operações CRUD (Create, Read, Update, Delete) de veículos.
 Aqui está um guia rápido para configurar e executar o projeto.
 
 ## Pré-requisitos
