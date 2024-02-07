@@ -40,14 +40,14 @@ export function ListItem({ contact, onDelete }: ListItemProps) {
       setIsModalOpen(false);
     };
     return (
-        <li className="w-full bg-blue-300 mb-5 flex justify-start p-4 gap-16">
+        <li className="w-full bg-zinc-800 mb-3 flex justify-start p-4 gap-16 text-white rounded">
 
             <div className="flex w-full gap-28">
                 <div className='flex flex-1 gap-1'>
                     <h3>Nome: </h3>
                     <h3>{contact.nome}</h3>
                 </div>
-                <div className='flex flex-1 gap-1'>
+                <div className='flex flex-grow-0 gap-1'>
                     <h3>Idade: </h3>
                     <h3>{contact.idade} anos</h3>
                 </div>
@@ -58,15 +58,13 @@ export function ListItem({ contact, onDelete }: ListItemProps) {
             </div>
 
             <div className="flex items-center space-x-4">
-                <button class="inline-block rounded bg-primary px-6 pb-2 
-                pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] 
-                transition duration-150 ease-in-out hover:bg-primary-600"
+                <button className="inline-block rounded bg-zinc-500 px-6 pb-2 
+                pt-2.5 text-xs font-medium uppercase leading-normal hover:bg-green-500 transition-colors duration-300 ease-in-out"
                     data-te-toggle="tooltip" data-te-placement="top" data-te-ripple-init data-te-ripple-color="light" title="Editar" onClick={handleEdit}>
                     <Pen />
                 </button>
-                <button class="inline-block rounded bg-primary px-6 pb-2 
-                pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] 
-                transition duration-150 ease-in-out hover:bg-primary-600" 
+                <button className="inline-block rounded bg-zinc-500 px-6 pb-2 
+                pt-2.5 text-xs font-medium uppercase leading-normaL hover:bg-red-500 transition-colors duration-300 ease-in-out" 
                     data-te-toggle="tooltip" data-te-placement="top" data-te-ripple-init data-te-ripple-color="light" title="Excluir"
                     onClick={handleDelete}>
                     <Trash />

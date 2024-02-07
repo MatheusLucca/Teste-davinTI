@@ -1,2 +1,2 @@
 "use client"; 
-export {Trash, Pen} from 'phosphor-react'
+export {Trash, Pen, MagnifyingGlass} from 'phosphor-react'

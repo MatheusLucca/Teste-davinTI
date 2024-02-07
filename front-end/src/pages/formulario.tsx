@@ -10,7 +10,7 @@ export default function Formulario() {
                 <Header />
                 <div className='w-full flex justify-center p-5'>
                     <div className='max-w-[1200px] w-full flex flex-col gap-5'>
-                        <h1 className='text-2xl text-center'>Formulário</h1>
+                        <h1 className='text-2xl text-center font-bold uppercase'>Formulário</h1>
                         <Form />
                     </div>
 
